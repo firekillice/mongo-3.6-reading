@@ -81,8 +81,8 @@ OpMsg OpMsg::parse(const Message& message) try {
     // It is the caller's responsibility to call the correct parser for a given message type.
     invariant(!message.empty());
     invariant(message.operation() == dbMsg);
-
     const uint32_t flags = OpMsg::flags(message);
+
     uassert(ErrorCodes::IllegalOpMsgFlag,
             str::stream() << "Message contains illegal flags value: Ob"
                           << std::bitset<32>(flags).to_string(),
